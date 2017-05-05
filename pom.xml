@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.star.wonder</groupId>
+    <artifactId>wonder</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>wonder-webapp</module>
+        <module>wonder-tools</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>Ali</id>
+            <name>Ali Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>Nexus</id>
+            <name>noah Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Ali</id>
+            <name>Ali Plugin Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.source.version>2.4</maven.source.version>
+        <maven.resources.version>2.7</maven.resources.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <buildNumber>${maven.build.timestamp}</buildNumber>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <org-springframework-version>4.2.1.RELEASE</org-springframework-version>
+
+        <ehcache-version>2.8.2</ehcache-version>
+
+        <org.slf4j-version>1.7.21</org.slf4j-version>
+        <org.slf4j.logback-version>1.1.7</org.slf4j.logback-version>
+
+    </properties>
+
+
+    <dependencies>
+        <!--<dependency>-->
+        <!--<groupId>javax.mail</groupId>-->
+        <!--<artifactId>mail</artifactId>-->
+        <!--<version>1.4.7</version>-->
+        <!--</dependency>-->
+
+        <!--Spring:start-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org-springframework-version}</version>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<groupId>commons-logging</groupId>-->
+            <!--<artifactId>commons-logging</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org-springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org-springframework-version}</version>
+        </dependency>
+        <!--Spring:end-->
+
+        <!-- Servlet:start -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!--<build>-->
+    <!--<resources>-->
+    <!--<resource>-->
+    <!--<directory>${basedir}/src/main/resources</directory>-->
+    <!--<filtering>true</filtering>-->
+    <!--</resource>-->
+    <!--<resource>-->
+    <!--<directory>${basedir}/src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.xml</include>-->
+    <!--</includes>-->
+    <!--</resource>-->
+    <!--</resources>-->
+    <!--<testResources>-->
+    <!--<testResource>-->
+    <!--<directory>${basedir}/src/test/resources</directory>-->
+    <!--<filtering>true</filtering>-->
+    <!--</testResource>-->
+    <!--</testResources>-->
+    <!--</build>-->
+
+</project>
