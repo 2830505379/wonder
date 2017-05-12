@@ -2,45 +2,44 @@
 <configuration>
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] %class:%line >>
-				%msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %class:%line >>%msg%n</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>info</level>
+			<level>debug</level>
 		</filter>
 	</appender>
-	<appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender" >
-		<file>/opt/logs/insurance/infoInsure.log</file><!-- /opt/logs/settle.log -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>/opt/logs/insurance/infoInsure.%d{yyyy-MM-dd}.log</FileNamePattern>
-		</rollingPolicy>
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>info</level>
-		</filter>
-		<encoder>
-			<Pattern>%date{yyyy-MM-dd HH:mm:ss}[%level][%thread][%logger:%line]-%mdc{client} %msg%n</Pattern>
-			<charset>UTF-8</charset>
-		</encoder>
-	</appender>
+	<!--<appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender" >-->
+		<!--<file>/opt/logs/insurance/infoInsure.log</file>&lt;!&ndash; /opt/logs/settle.log &ndash;&gt;-->
+		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+			<!--<FileNamePattern>/opt/logs/insurance/infoInsure.%d{yyyy-MM-dd}.log</FileNamePattern>-->
+		<!--</rollingPolicy>-->
+		<!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+			<!--<level>info</level>-->
+		<!--</filter>-->
+		<!--<encoder>-->
+			<!--<Pattern>%date{yyyy-MM-dd HH:mm:ss}[%level][%thread][%logger:%line]-%mdc{client} %msg%n</Pattern>-->
+			<!--<charset>UTF-8</charset>-->
+		<!--</encoder>-->
+	<!--</appender>-->
 
-	<appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/opt/logs/insurance/errorInsure.log</file><!-- /opt/logs/settle.log -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>/opt/logs/insurance/errorInsure.%d{yyyy-MM-dd}.log</FileNamePattern>
-		</rollingPolicy>
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
-		</filter>
-		<encoder>
-			<Pattern>%date{yyyy-MM-dd HH:mm:ss}[%level][%thread][%logger:%line]-%mdc{client} %msg%n</Pattern>
-			<charset>UTF-8</charset>
-		</encoder>
-	</appender>
-	<logger name="com.noah.order.common.dao.mapper" level="debug" additivity="true"/>
+	<!--<appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+		<!--<file>/opt/logs/insurance/errorInsure.log</file>&lt;!&ndash; /opt/logs/settle.log &ndash;&gt;-->
+		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+			<!--<FileNamePattern>/opt/logs/insurance/errorInsure.%d{yyyy-MM-dd}.log</FileNamePattern>-->
+		<!--</rollingPolicy>-->
+		<!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+			<!--<level>ERROR</level>-->
+		<!--</filter>-->
+		<!--<encoder>-->
+			<!--<Pattern>%date{yyyy-MM-dd HH:mm:ss}[%level][%thread][%logger:%line]-%mdc{client} %msg%n</Pattern>-->
+			<!--<charset>UTF-8</charset>-->
+		<!--</encoder>-->
+	<!--</appender>-->
+
+	<!--<logger name="com.noah.order.common.dao.mapper" level="debug" additivity="true"/>-->
+
 	<root level="trace" >
-		<appender-ref ref="infoFile" />
-		<appender-ref ref="errorFile" />
 		<appender-ref ref="stdout" />
 	</root>
 </configuration>

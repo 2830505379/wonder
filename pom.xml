@@ -9,9 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>wonder-tools</module>
-        <module>wonder-dao</module>
         <module>wonder-webapp</module>
+        <module>wonder-tools</module>
+        <module>wonder-service</module>
     </modules>
 
     <repositories>
@@ -35,27 +35,21 @@
     </pluginRepositories>
 
     <properties>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <maven.source.version>2.4</maven.source.version>
-        <maven.resources.version>2.7</maven.resources.version>
-        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-        <buildNumber>${maven.build.timestamp}</buildNumber>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <org-springframework-version>4.2.1.RELEASE</org-springframework-version>
-
-        <ehcache-version>2.8.2</ehcache-version>
-
-        <org.slf4j-version>1.7.21</org.slf4j-version>
-        <org.slf4j.logback-version>1.1.7</org.slf4j.logback-version>
-
+        <!--compile-->
+        <jdk-version>1.8</jdk-version>
+        <project-build-sourceEncoding>utf-8</project-build-sourceEncoding>
+        <!--dependency-->
+        <org-springframework-version>4.3.8.RELEASE</org-springframework-version>
+        <javax-servlet-api-version>3.1.0</javax-servlet-api-version>
+        <javax-servlet-jstl-version>1.2</javax-servlet-jstl-version>
+        <javax-servlet-jsp-api>2.3.1</javax-servlet-jsp-api>
+        <org-slf4j-version>1.7.25</org-slf4j-version>
+        <org-slf4j-logback-version>1.2.3</org-slf4j-logback-version>
+        <org-logback-ext-spring-version>0.1.2</org-logback-ext-spring-version>
     </properties>
 
 
     <dependencies>
-
         <!--Spring:start-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -70,56 +64,122 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org-springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
+            <artifactId>spring-jdbc</artifactId>
             <version>${org-springframework-version}</version>
         </dependency>
         <!--Spring:end-->
+
+        <!-- LOGGING start -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${org-slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${org-slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${org-slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org-slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${org-slf4j-logback-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
+            <version>${org-slf4j-logback-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>${org-logback-ext-spring-version}</version>
+        </dependency>
+        <!-- LOGGING end -->
 
         <!-- Servlet:start -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax-servlet-api-version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
+            <version>${javax-servlet-jsp-api}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${javax-servlet-jstl-version}</version>
             <scope>provided</scope>
         </dependency>
+        <!--Servlet:end-->
     </dependencies>
 
-    <!--<build>-->
-    <!--<resources>-->
-    <!--<resource>-->
-    <!--<directory>${basedir}/src/main/resources</directory>-->
-    <!--<filtering>true</filtering>-->
-    <!--</resource>-->
-    <!--<resource>-->
-    <!--<directory>${basedir}/src/main/java</directory>-->
-    <!--<includes>-->
-    <!--<include>**/*.xml</include>-->
-    <!--</includes>-->
-    <!--</resource>-->
-    <!--</resources>-->
-    <!--<testResources>-->
-    <!--<testResource>-->
-    <!--<directory>${basedir}/src/test/resources</directory>-->
-    <!--<filtering>true</filtering>-->
-    <!--</testResource>-->
-    <!--</testResources>-->
-    <!--</build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${jdk-version}</source>
+                    <target>${jdk-version}</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                    <encoding>${project-build-sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <filters>
+            <filter>../conf/env-${env-properties}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <!--<resource>-->
+                <!--<directory>${basedir}/src/main/java</directory>-->
+                <!--<includes>-->
+                    <!--<include>**/*.xml</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        </resources>
+    </build>
+    <profiles>
+        <profile>
+            <id>home</id>
+            <properties>
+                <env-properties>home</env-properties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>company</id>
+            <properties>
+                <env-properties>company</env-properties>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
 </project>
