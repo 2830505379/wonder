@@ -9,8 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>wonder-webapp</module>
         <module>wonder-tools</module>
+        <module>wonder-dao</module>
+        <module>wonder-webapp</module>
     </modules>
 
     <repositories>
@@ -54,23 +55,18 @@
 
 
     <dependencies>
-        <!--<dependency>-->
-        <!--<groupId>javax.mail</groupId>-->
-        <!--<artifactId>mail</artifactId>-->
-        <!--<version>1.4.7</version>-->
-        <!--</dependency>-->
 
         <!--Spring:start-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${org-springframework-version}</version>
-            <!--<exclusions>-->
-            <!--<exclusion>-->
-            <!--<groupId>commons-logging</groupId>-->
-            <!--<artifactId>commons-logging</artifactId>-->
-            <!--</exclusion>-->
-            <!--</exclusions>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
