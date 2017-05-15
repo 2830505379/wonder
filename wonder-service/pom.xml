@@ -11,5 +11,11 @@
 
     <artifactId>wonder-service</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.star.wonder</groupId>
+            <artifactId>wonder-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,5 +1,6 @@
 package com.star.test;
 
+import com.star.tools.logback.LogUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,5 +13,9 @@ public class TestController {
     @RequestMapping("/test")
     public String test(){
         return "test";
+    }
+
+    public static void main(String[] args) {
+        LogUtil.info("test main");
     }
 }
