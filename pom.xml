@@ -51,6 +51,15 @@
 
 
     <dependencies>
+
+        <!--guava:start-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+        <!--guava:end-->
+
         <!--Spring:start-->
         <dependency>
             <groupId>org.springframework</groupId>

@@ -11,13 +11,13 @@ public class LogUtil {
 
     private static Logger _LOG = LoggerFactory.getLogger(LogUtil.class);
 
-    public static void info(String msg) {
-        _LOG.info(msg);
+    public static void info(String msg,Object... arguments) {
+        _LOG.info(msg,arguments);
     }
-    public static void error(String msg) {
-        _LOG.error(msg);
+    public static void error(String msg,Object... arguments) {
+        _LOG.error(msg,arguments);
     }
-    public static void debug(String msg) {
-        _LOG.debug(msg);
+    public static void debug(String msg,Object... arguments) {
+        _LOG.debug(msg,arguments);
     }
 }
