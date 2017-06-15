@@ -12,8 +12,8 @@ public class MyPatternLayoutEncoder extends PatternLayoutEncoderBase<ILoggingEve
     @Override
     public void start() {
         PatternLayout patternLayout = new PatternLayout();
-        patternLayout.getDefaultConverterMap().put("myclass",MyClassOfCallerConverter.class.getName());
-        patternLayout.getDefaultConverterMap().put("myline",MyLineOfCallerConverter.class.getName());
+        patternLayout.getDefaultConverterMap().put("class",MyClassOfCallerConverter.class.getName());
+        patternLayout.getDefaultConverterMap().put("line",MyLineOfCallerConverter.class.getName());
         patternLayout.setContext(context);
         patternLayout.setPattern(getPattern());
         patternLayout.setOutputPatternAsHeader(outputPatternAsHeader);
